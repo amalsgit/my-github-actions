@@ -1,0 +1,17 @@
+name: Custom triggered CI
+
+on:
+  repository_dispatch:
+    types: stage-deploy
+
+jobs:
+  build:
+    name: Stage deployment
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Do Something
+        run: echo Doing Something...
+
+      - name: Do Something Based On Triggered Event Data
+        run: 'echo "Triggered event text: ${{ github.event.client_payload.text }}"'
